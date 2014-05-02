@@ -24,10 +24,10 @@ object OptionalExercises2 {
     println("Environment for host3 is " + getEnvForHost("host3") + " expecting 'couldn't resolve'")
     println("Environment for host4 is " + getEnvForHost("host4") + " expecting 'couldn't resolve'")
 
-    println("Should be connected to rea.com " + connectToReaHostsOnly("host1"))
-    println("Should be connected to test.rea.com " + connectToReaHostsOnly("host2"))
-    println("Should not be connected to netflix.com " + connectToReaHostsOnly("host3"))
-    println("Should not be connected to unknown host " + connectToReaHostsOnly("host4"))
+    println("Should be connected to rea.com: " + connectToReaHostsOnly("host1"))
+    println("Should be connected to test.rea.com: " + connectToReaHostsOnly("host2"))
+    println("Should not be connected to netflix.com: " + connectToReaHostsOnly("host3"))
+    println("Should not be connected to unknown host: " + connectToReaHostsOnly("host4"))
   }
 
   val hosts = Map("host1" -> "rea.com", "host2" -> "test.rea.com", "host3" -> "netflix.com")
