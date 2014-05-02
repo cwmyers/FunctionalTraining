@@ -3,7 +3,6 @@ package com.rea.higherorder
 object Composing {
   def main(args: Array[String]) {
     println(addTwoMinusThree(6) + " should equal 5")
-
   }
 
   def add(a: Int, b: Int) = a + b
@@ -19,4 +18,9 @@ object Composing {
   // How do we create a new function from addTwo and minusThree?
   val addTwoMinusThree: Int => Int = addTwo compose minusThree
 
+  // How do we convert f and g into a brand new function?
+  def compose_[A, B, C](f: A => B, g: B => C): A => C = ???
+
 }
+
+
