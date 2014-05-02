@@ -6,7 +6,7 @@ object ValidationExercises {
 
   val allBad = Map[String,String]()
   val goodInput = Map("firstName" -> "Vladimir", "lastName" -> "Putin", "password" -> "crimea14")
-  val passwordTooShort = goodInput + ("password" -> "crim3a")
+  val passwordIsTooShort = goodInput + ("password" -> "crim3a")
   val passwordNoNumbers = goodInput + ("password" -> "crimeaasd")
   val passwordNoNumbersAndTooShort = goodInput + ("password" -> "crime")
   val noFirstName = goodInput - "firstName"
@@ -20,7 +20,7 @@ object ValidationExercises {
 
   def passwordLengthValidation(password: String): ValidationNel[ErrorCode, String] = ???
 
-  def validateInput(input: Map[String, String]): ValidationNel[ErrorCode, String] = ???
+  def validateInput(input: Map[String, String]): ValidationNel[ErrorCode, Person] = ???
 
   def main(args: Array[String]) {
      println("Good input = " + validateInput(goodInput))
@@ -34,7 +34,7 @@ case class Person(firstName:String,lastName:String, password:String)
 
 sealed trait ErrorCode
 
-case object passwordToShort extends ErrorCode
+case object passwordTooShort extends ErrorCode
 
 case object passwordTooWeak extends ErrorCode
 
