@@ -34,7 +34,10 @@ object OptionalExercises2 {
   val envs = Map("rea.com" -> "prod", "test.rea.com" -> "test", "amazon.com" -> "stage")
 
   def getEnvForHost(host: String): Option[String] = hosts.get(host).flatMap(envs.get)
+  def getEnvForHost(host: String): String = ???
 
+  // See how many ways you can implement this.
+  // Will either return "Connected to rea.com" or "not connected"
   def connectToReaHostsOnly(host: String): String = hosts.get(host).flatMap {
     domain =>
       if (domain.contains("rea.com"))
@@ -43,6 +46,6 @@ object OptionalExercises2 {
   }.map(createConnection).
     getOrElse("not connected")
 
-  def createConnection(host: String): String = s"Connected to $host"
+  def createConnection(domain: String): String = s"Connected to $domain"
 
 }
