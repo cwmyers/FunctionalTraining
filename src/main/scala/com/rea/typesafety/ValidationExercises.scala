@@ -5,7 +5,6 @@ import scalaz._, Scalaz._
 object ValidationExercises {
   type VE[+A] = ValidationNel[ErrorCode, A]
 
-
   val allBad = Map[String, String]()
   val goodInput = Map("firstName" -> "Vladimir", "lastName" -> "Putin", "password" -> "crimea14")
   val passwordIsTooShort = goodInput + ("password" -> "crim3a")
@@ -44,10 +43,12 @@ object ValidationExercises {
 
   def main(args: Array[String]) {
     println("Good input = " + validateInput(goodInput))
-    println("All Bad input = " + validateInput(allBad))
+    println("All Bad input" + validateInput(allBad))
     println("password too short = " + validateInput(passwordIsTooShort))
     println("password too weak = " + validateInput(passwordNoNumbers))
     println("password too short and too weak = " + validateInput(passwordNoNumbersAndTooShort))
+    println("no first name = " + validateInput(noFirstName))
+    println("no last name = " + validateInput(noFirstName))
   }
 
 
