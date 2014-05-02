@@ -1,13 +1,12 @@
 name := "FunctionalTraining"
 
-organization := "bskyb.com"
+organization := "rea-group.com"
 
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.10.0"
+scalaVersion := "2.11.0"
 
 libraryDependencies ++= Seq(
-  "org.specs2" %% "specs2" % "1.13" % "test"
 )
 
-initialCommands := "import bskyb.com.functionaltraining._"
+initialCommands := "import com.rea.higherorder._; import com.rea.typesafety._; import Composing._"
