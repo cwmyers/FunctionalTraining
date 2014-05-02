@@ -18,4 +18,9 @@ object Composing {
   // How do we create a new function from addTwo and minusThree?
   val addTwoMinusThree: Int => Int = ???
 
+  // How do we convert f and g into a brand new function?
+  def compose_[A, B, C](f: A => B, g: B => C): A => C = ???
+
 }
+
+
