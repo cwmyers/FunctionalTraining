@@ -14,7 +14,7 @@ object OptionalExercises1 {
 
   def lengthOfHost(): Option[Int] = getFromConfig("host").map(_.length)
 
-  def portPlus1000(): Option[Int] = getFromConfig("port").map(_.toInt).map(_+1000)
+  def portPlus1000(): Option[Int] = getFromConfig("port").map(_.toInt).map(_ + 1000)
 }
 
 object OptionalExercises2 {
@@ -35,7 +35,13 @@ object OptionalExercises2 {
 
   def getEnvForHost(host: String): Option[String] = hosts.get(host).flatMap(envs.get)
 
-  def connectToReaHostsOnly(host: String): String = ???
+  def connectToReaHostsOnly(host: String): String = hosts.get(host).flatMap {
+    domain =>
+      if (domain.contains("rea.com"))
+        Some(domain)
+      else None
+  }.map(createConnection).
+    getOrElse("not connected")
 
   def createConnection(host: String): String = s"Connected to $host"
 
