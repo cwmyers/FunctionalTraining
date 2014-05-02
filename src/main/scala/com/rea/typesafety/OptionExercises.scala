@@ -10,11 +10,11 @@ object OptionalExercises1 {
 
   val config = Map[String, String]("host" -> "rea.com", "port" -> "8080")
 
-  def getFromConfig(key: String): Option[String] = ???
+  def getFromConfig(key: String): Option[String] = config.get(key)
 
-  def lengthOfHost(): Option[Int] = ???
+  def lengthOfHost(): Option[Int] = getFromConfig("host").map(_.length)
 
-  def portPlus1000(): Option[Int] = ???
+  def portPlus1000(): Option[Int] = getFromConfig("port").map(_.toInt).map(_+1000)
 }
 
 object OptionalExercises2 {
@@ -33,7 +33,7 @@ object OptionalExercises2 {
   val hosts = Map("host1" -> "rea.com", "host2" -> "bskyb.com", "host3" -> "netflix.com")
   val envs = Map("sky.com" -> "prod", "bskyb.com" -> "test")
 
-  def getEnvForHost(host: String): Option[String] = ???
+  def getEnvForHost(host: String): Option[String] = hosts.get(host).flatMap(envs.get)
 
   def connectToSkyHostOnly(host: String): String = ???
 
