@@ -24,18 +24,18 @@ object OptionalExercises2 {
     println("Environment for host3 is " + getEnvForHost("host3") + " expecting 'couldn't resolve'")
     println("Environment for host4 is " + getEnvForHost("host4") + " expecting 'couldn't resolve'")
 
-    println("Should be connected to rea.com " + connectToSkyHostOnly("host1"))
-    println("Should be connected to bskyb.com " + connectToSkyHostOnly("host2"))
-    println("Should not be connected to netflix.com " + connectToSkyHostOnly("host3"))
-    println("Should not be connected to unknown host " + connectToSkyHostOnly("host4"))
+    println("Should be connected to rea.com " + connectToReaHostsOnly("host1"))
+    println("Should be connected to test.rea.com " + connectToReaHostsOnly("host2"))
+    println("Should not be connected to netflix.com " + connectToReaHostsOnly("host3"))
+    println("Should not be connected to unknown host " + connectToReaHostsOnly("host4"))
   }
 
-  val hosts = Map("host1" -> "rea.com", "host2" -> "bskyb.com", "host3" -> "netflix.com")
-  val envs = Map("sky.com" -> "prod", "bskyb.com" -> "test")
+  val hosts = Map("host1" -> "rea.com", "host2" -> "test.rea.com", "host3" -> "netflix.com")
+  val envs = Map("rea.com" -> "prod", "test.rea.com" -> "test", "amazon.com" -> "stage")
 
   def getEnvForHost(host: String): Option[String] = ???
 
-  def connectToSkyHostOnly(host: String): String = ???
+  def connectToReaHostsOnly(host: String): String = ???
 
   def createConnection(host: String): String = s"Connected to $host"
 
