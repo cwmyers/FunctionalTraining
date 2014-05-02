@@ -12,7 +12,7 @@ object ValidationExercises {
   val noFirstName = goodInput - "firstName"
   val noLastName = goodInput - "lastName"
 
-  def validateKey(key: String): ValidationNel[ErrorCode, String] = ???
+  def validateKey(key: String, input:Map[String,String]): ValidationNel[ErrorCode, String] = ???
 
   def nameValidation(name: String): ValidationNel[ErrorCode, String] = ???
 
