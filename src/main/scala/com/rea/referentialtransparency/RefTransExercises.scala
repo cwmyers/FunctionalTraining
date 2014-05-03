@@ -9,4 +9,11 @@ object RefTransExercises {
     else
       println("player two is the winner")
 
+  def printWinner2(p1: Int, p2: Int) =
+    println(determineWinner(p1, p2) + " is the winner")
+
+  // This function is testable without the side-effects
+  def determineWinner(p1: Int, p2: Int): String = {
+    if (p1 > p2) "player one" else "player two"
+  }
 }
