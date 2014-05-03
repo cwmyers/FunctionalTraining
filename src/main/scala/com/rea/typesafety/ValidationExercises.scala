@@ -32,10 +32,10 @@ object ValidationExercises {
     val firstName = vName("firstName")
     val lastName = vName("lastName")
 
-    val password = for {
-      password <- vKey("password")
-      _ <- passwordLengthValidation(password) +++ passwordStrengthValidation(password)
-    } yield password
+
+    val password = vKey("password").flatMap(
+      password => passwordLengthValidation(password) <* passwordStrengthValidation(password)
+    )
 
     Apply[VE].apply3(firstName, lastName, password)(Person)
 
