@@ -34,13 +34,16 @@ object RecursionExercises {
 
   // Mapping over a list.  You are given a List of type A and a function converting an A to a B
   // and you give back a list of type B.  No list functions allowed!
-  def map[A, B](x: List[A], f: A => B): List[B] = ???
+  def map[A, B](x: List[A], f: A => B): List[B] = x match {
+    case Nil => Nil
+    case h :: t => f(h) :: map(t, f)
+  }
 
 
   // Given a function from A => Boolean, return a list with only those item where the function returned true.
   def filter[A](x: List[A], f: A => Boolean): List[A] = ???
 
-  def main(args: List[String]) = {
+  def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
     println("0 + 34 = 34: " + add(0, 34))
     println("0 + 0 = 0: " + add(0, 0))
