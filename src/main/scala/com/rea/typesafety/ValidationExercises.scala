@@ -46,3 +46,35 @@ case object passwordTooWeak extends ErrorCode
 case class keyNotFound(key: String) extends ErrorCode
 
 case class nameIsEmpty(key: String) extends ErrorCode
+
+
+/*
+
+Interesting Validator combinators
+
+scala> val a:ValidationNel[String,String]  = "hi".successNel
+a: scalaz.ValidationNel[String,String] = Success(hi)
+
+scala> val b:ValidationNel[String,String]  = "world".successNel
+b: scalaz.ValidationNel[String,String] = Success(world)
+
+scala> val c:ValidationNel[String,String]  = "error1".failNel
+c: scalaz.ValidationNel[String,String] = Failure(NonEmptyList(error1))
+
+scala> val d:ValidationNel[String,String]  = "error2".failNel
+d: scalaz.ValidationNel[String,String] = Failure(NonEmptyList(error2))
+
+scala> a <* b
+res0: scalaz.Validation[scalaz.NonEmptyList[String],String] = Success(hi)
+
+scala> a *> b
+res1: scalaz.Validation[scalaz.NonEmptyList[String],String] = Success(world)
+
+scala> c <* d
+res2: scalaz.Validation[scalaz.NonEmptyList[String],String] = Failure(NonEmptyList(error1, error2))
+
+scala> a <* d
+res3: scalaz.Validation[scalaz.NonEmptyList[String],String] = Failure(NonEmptyList(error2))
+
+
+ */
