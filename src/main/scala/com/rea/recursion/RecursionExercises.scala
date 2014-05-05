@@ -43,5 +43,7 @@ object RecursionExercises {
       x: Int => x >= 4
     }))
 
+    println("Append List(a,b,c) with List(d,e,f) = List(a,b,c,d,e,f): " + append(List('a', 'b', 'c'), List('d', 'e', 'f')))
+
   }
 }
