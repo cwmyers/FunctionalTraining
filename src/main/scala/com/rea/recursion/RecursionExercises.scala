@@ -17,6 +17,8 @@ object RecursionExercises {
   //Again no list functions are permitted for the following
   def length[A](x: List[A]): Int = ???
 
+  // Do you notice anything similar between sum and length? Hmm...
+
   // Mapping over a list.  You are given a List of type A and a function converting an A to a B
   // and you give back a list of type B.  No list functions allowed!
   def map[A, B](x: List[A], f: A => B): List[B] = ???
@@ -28,5 +30,6 @@ object RecursionExercises {
     println("0 + 0 = 0: " + add(0, 0))
 
     println("Sum of List(1,2,3,4,5,6) = 21: " + sum(List(1, 2, 3, 4, 5, 6)))
+    println("Length of List(1,2,3,4,5,6) = 6: " + length(List(1, 2, 3, 4, 5, 6)))
   }
 }
