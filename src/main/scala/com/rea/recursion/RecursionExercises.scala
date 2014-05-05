@@ -44,7 +44,6 @@ object RecursionExercises {
     case h :: t => f(h) :: map(t, f)
   }
 
-
   // Given a function from A => Boolean, return a list with only those item where the function returned true.
   def filter[A](x: List[A], f: A => Boolean): List[A] = x match {
     case Nil => Nil
@@ -56,6 +55,9 @@ object RecursionExercises {
         filter1
     }
   }
+
+  // This pattern should be familiar by now... psst... look at add.
+  def append[A](x: List[A], y: List[A]): List[A] = ???
 
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
