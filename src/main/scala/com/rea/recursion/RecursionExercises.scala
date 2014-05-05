@@ -8,7 +8,7 @@ object RecursionExercises {
 
   def minusOne(n: Int) = n - 1
 
-  // Add two postive Integers together.  You are only allowed to use plusOne and minusOne above
+  // Add two positive Integers together.  You are only allowed to use plusOne and minusOne above
   def add(a: Int, b: Int): Int = if (a == 0) b else add(minusOne(a), plusOne(b))
 
   // You are not permitted to use any list functions such as map, flatMap, ++, flatten etc
