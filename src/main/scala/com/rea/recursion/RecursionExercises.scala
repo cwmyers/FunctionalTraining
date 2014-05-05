@@ -1,7 +1,7 @@
 package com.rea.recursion
 
 
-// Based largely on http://tmorris.net/posts/scala-exercises-for-beginners/index.html
+// Taken from http://tmorris.net/posts/scala-exercises-for-beginners/index.html
 object RecursionExercises {
 
   def plusOne(n: Int) = n + 1
@@ -20,6 +20,13 @@ object RecursionExercises {
 
     sum0(0,l)
   }
+
+  //Again no list functions are permitted for the following
+  def length[A](x: List[A]): Int = ???
+
+  // Mapping over a list.  You are given a List of type A and a function converting an A to a B
+  // and you give back a list of type B.  No list functions allowed!
+  def map[A, B](x: List[A], f: A => B): List[B] = ???
 
 
   def main(args: Array[String]) = {
