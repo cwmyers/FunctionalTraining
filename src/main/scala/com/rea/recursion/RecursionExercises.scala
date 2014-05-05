@@ -2,7 +2,7 @@ package com.rea.recursion
 
 
 // Taken from http://tmorris.net/posts/scala-exercises-for-beginners/index.html
-object RecursionExercises {
+object RecursionExercises1 {
 
   def plusOne(n: Int) = n + 1
 

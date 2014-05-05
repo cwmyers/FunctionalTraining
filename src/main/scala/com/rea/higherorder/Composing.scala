@@ -23,7 +23,7 @@ object Composing {
   
   val addTwoMinusThreePrettyPrint: Int => String = ???
 
-  // How do we convert f and g into a brand new function?
+  // How do we convert (compose) f and g into a brand new function?
   def compose_[A, B, C](f: B => C, g: A => B): A => C = ???
 
 }
