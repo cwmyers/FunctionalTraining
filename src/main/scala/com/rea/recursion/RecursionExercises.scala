@@ -57,7 +57,10 @@ object RecursionExercises {
   }
 
   // This pattern should be familiar by now... psst... look at add.
-  def append[A](x: List[A], y: List[A]): List[A] = ???
+  def append[A](x: List[A], y: List[A]): List[A] = x match {
+    case Nil => y
+    case h :: t => append(t, h :: y)
+  }
 
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
