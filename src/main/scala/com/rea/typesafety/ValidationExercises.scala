@@ -76,5 +76,20 @@ res2: scalaz.Validation[scalaz.NonEmptyList[String],String] = Failure(NonEmptyLi
 scala> a <* d
 res3: scalaz.Validation[scalaz.NonEmptyList[String],String] = Failure(NonEmptyList(error2))
 
+scala> a flatMap (hi => b)
+res4: scalaz.Validation[scalaz.NonEmptyList[String],String] = Success(world)
+
+scala> a flatMap (s => if (s == "hi") "hey back".successNel else "fine, be that way!".failNel)
+res6: scalaz.Validation[scalaz.NonEmptyList[String],String] = Success(hey back)
+
+scala> d flatMap (s => if (s == "hi") "hey back".successNel else "fine, be that way!".failNel)
+res7: scalaz.Validation[scalaz.NonEmptyList[String],String] = Failure(NonEmptyList(error2))
+
+scala> b flatMap (s => if (s == "hi") "hey back".successNel else "fine, be that way!".failNel)
+res8: scalaz.Validation[scalaz.NonEmptyList[String],String] = Failure(NonEmptyList(fine, be that way!))
+
+scala> a map (hi => hi + " worldz")
+res5: scalaz.Validation[scalaz.NonEmptyList[String],String] = Success(hi worldz)
+
 
  */
