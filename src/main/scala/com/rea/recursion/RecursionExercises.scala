@@ -23,9 +23,11 @@ object RecursionExercises {
   // and you give back a list of type B.  No list functions allowed!
   def map[A, B](x: List[A], f: A => B): List[B] = ???
 
-
   // Given a function from A => Boolean, return a list with only those item where the function returned true.
   def filter[A](x: List[A], f: A => Boolean): List[A] = ???
+
+  // This pattern should be familiar by now... psst... look at add.
+  def append[A](x: List[A], y: List[A]): List[A] = ???
 
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
