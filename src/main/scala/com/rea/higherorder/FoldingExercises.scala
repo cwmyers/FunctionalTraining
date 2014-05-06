@@ -1,5 +1,7 @@
 package com.rea.higherorder
 
+import scala.annotation.tailrec
+
 object FoldingExercises {
 
   /**
@@ -11,7 +13,8 @@ object FoldingExercises {
    *
    */
   def foldLeft[A, B](initialValue: B, list: List[A])(f: (B, A) => B): B = {
-    def fl(acc:B, l:List[A]) : B = l match {
+    @tailrec
+    def fl(acc: B, l: List[A]): B = l match {
       case Nil => acc
       case h :: t => fl(f(acc, h), t)
     }
@@ -19,13 +22,19 @@ object FoldingExercises {
     fl(initialValue, list)
   }
 
-  def foldRight[A,B](initialValue:B, list: List[A])(f: (A,B) => B):B = ???
+  def foldRight[A, B](initialValue: B, list: List[A])(f: (A, B) => B): B = {
+    def fr(l: List[A], acc: B): B = l match {
+      case Nil => acc
+      case h :: t => f(h, fr(t, acc))
+    }
+    fr(list, initialValue)
+  }
 
   def main(args: Array[String]) = {
-    assert(foldLeft(0, List(1,2,3))(_+_) == 6)
-    assert(foldLeft(List[Int](), List(1,2,3))((a,e) =>e :: a) == List(3,2,1))
-    assert(foldRight(List[Int](), List(1,2,3))((e,a) =>e :: a) == List(1,2,3))
-    assert(foldRight(0, List(1,2,3))(_+_) == 6)
+    assert(foldLeft(0, List(1, 2, 3))(_ + _) == 6)
+    assert(foldLeft(List[Int](), List(1, 2, 3))((a, e) => e :: a) == List(3, 2, 1))
+    assert(foldRight(List[Int](), List(1, 2, 3))((e, a) => e :: a) == List(1, 2, 3))
+    assert(foldRight(0, List(1, 2, 3))(_ + _) == 6)
   }
 
 }
