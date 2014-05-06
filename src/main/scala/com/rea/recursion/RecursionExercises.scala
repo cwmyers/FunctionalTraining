@@ -82,7 +82,7 @@ object RecursionExercises1 {
   // solution to solve this one?
   def flatten[A](x: List[List[A]]): List[A] = {
     @tailrec
-    def flatten0(acc: List[A], l : List[List[A]]): List[A] = l match {
+    def flatten0(acc: List[A], l: List[List[A]]): List[A] = l match {
       case Nil => acc
       case h :: t => flatten0(append(acc, h), t)
     }
@@ -93,7 +93,14 @@ object RecursionExercises1 {
   // Follow the types.  You've done a great job getting here. Follow the types.
   def flatMap[A, B](x: List[A], f: A => List[B]): List[B] = flatten(map(x, f))
 
-  def maximum(x: List[Int]): Int = ???
+  def maximum(x: List[Int]): Int = {
+    def max(currentMax: Int, a: List[Int]): Int = a match {
+      case Nil => currentMax
+      case h :: t => if (h > currentMax) max(h, t) else max(currentMax, t)
+    }
+
+    max(0,x)
+  }
 
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
