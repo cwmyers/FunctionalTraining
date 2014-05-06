@@ -12,4 +12,13 @@ object FoldingExercises {
    */
   def foldLeft[A, B](initialValue: B, list: List[A])(f: (B, A) => B): B = ???
 
+  def foldRight[A,B](initialValue:B, list: List[A])(f: (A,B) => B):B = ???
+
+  def main(args: Array[String]) = {
+    assert(foldLeft(0, List(1,2,3))(_+_) == 6)
+    assert(foldLeft(List[Int](), List(1,2,3))((a,e) =>e :: a) == List(3,2,1))
+    assert(foldRight(List[Int](), List(1,2,3))((e,a) =>e :: a) == List(1,2,3))
+    assert(foldRight(0, List(1,2,3))(_+_) == 6)
+  }
+
 }
