@@ -1,6 +1,6 @@
 package com.rea.higherorder
 
-object Composing {
+object ComposingExercises {
   def main(args: Array[String]) {
     println(addTwoMinusThree(6) + " should equal 5")
     println(addTwoMinusThreePrettyPrint(2) + " should equal 'The number is 1'")
