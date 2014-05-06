@@ -46,36 +46,36 @@ object FoldingExercises {
    * foldLeft or foldRight.
    */
 
-  def sum(l: List[Int]): Int = ???
+  def sum(l: List[Int]): Int = foldLeft(0, l)(_ + _)
 
-  def length[A](x: List[A]): Int = ???
+  def length[A](x: List[A]): Int = foldLeft(0, x)((a, _) => a + 1)
 
-  def map[A, B](x: List[A])(f: A => B): List[B] = ???
+  def map[A, B](x: List[A])(f: A => B): List[B] = foldRight[A, List[B]](Nil, x)((e, acc) => f(e) :: acc)
 
-  def filter[A](x: List[A], f: A => Boolean): List[A] = ???
+  def filter[A](x: List[A], f: A => Boolean): List[A] = foldRight[A, List[A]](Nil, x)((e, acc) => if (f(e)) e :: acc else acc)
 
-  def append[A](x: List[A], y: List[A]): List[A] = ???
+  def append[A](x: List[A], y: List[A]): List[A] = foldRight(y, x)(_ :: _)
 
-  def flatten[A](x: List[List[A]]): List[A] = ???
+  def flatten[A](x: List[List[A]]): List[A] = foldRight(List[A](), x)(append)
 
-  def flatMap[A, B](x: List[A], f: A => List[B]): List[B] = ???
+  def flatMap[A, B](x: List[A], f: A => List[B]): List[B] = flatten(map(x)(f))
 
   // Maximum of the empty list is 0
-  def maximum(x: List[Int]): Int = ???
+  def maximum(x: List[Int]): Int = foldLeft(0, x)((acc, e) => if (e > acc) e else acc)
 
-  def reverse[A](x: List[A]): List[A] = ???
+  def reverse[A](x: List[A]): List[A] = foldLeft[A, List[A]](Nil, x)((acc, e) => e :: acc)
 
-  
+
   def main(args: Array[String]) = {
-    assert(foldLeft(0, List(1,2,3))(_+_) == 6)
-    assert(foldLeft(List[Int](), List(1,2,3))((a,e) =>e :: a) == List(3,2,1))
-    assert(foldRight(List[Int](), List(1,2,3))((e,a) =>e :: a) == List(1,2,3))
-    assert(foldRight(0, List(1,2,3))(_+_) == 6)
+    assert(foldLeft(0, List(1, 2, 3))(_ + _) == 6)
+    assert(foldLeft(List[Int](), List(1, 2, 3))((a, e) => e :: a) == List(3, 2, 1))
+    assert(foldRight(List[Int](), List(1, 2, 3))((e, a) => e :: a) == List(1, 2, 3))
+    assert(foldRight(0, List(1, 2, 3))(_ + _) == 6)
 
     println("Sum of List(1,2,3,4,5,6) = 21: " + sum(List(1, 2, 3, 4, 5, 6)))
     println("Length of List(1,2,3,4,5,6) = 6: " + length(List(1, 2, 3, 4, 5, 6)))
 
-    println("Add one to List(1,2,3,4,5,6) = List(2,3,4,5,6,7): " + map(List(1, 2, 3, 4, 5, 6))(_+1))
+    println("Add one to List(1,2,3,4,5,6) = List(2,3,4,5,6,7): " + map(List(1, 2, 3, 4, 5, 6))(_ + 1))
 
     println("Remove elements under 4 for List(1,2,3,4,5,6) = List(4,5,6): " + filter(List(1, 2, 3, 4, 5, 6), {
       x: Int => x >= 4
@@ -90,7 +90,7 @@ object FoldingExercises {
 
     println("maxium of List(4,3,5,7,1,2,6,3,4,5,6) = 7: " + maximum(List(4, 3, 5, 7, 1, 2, 6, 3, 4, 5, 6)))
 
-    println("Reverse a List(1,2,3,4,5,6) = List(6,5,4,3,2,1) : " + reverse(List(1,2,3,4,5,6)))
+    println("Reverse a List(1,2,3,4,5,6) = List(6,5,4,3,2,1) : " + reverse(List(1, 2, 3, 4, 5, 6)))
   }
 
 }
