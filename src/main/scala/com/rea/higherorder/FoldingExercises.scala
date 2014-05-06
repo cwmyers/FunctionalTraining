@@ -10,6 +10,13 @@ object FoldingExercises {
    * the accumulator of the next call.
    *
    */
-  def foldLeft[A, B](initialValue: B, list: List[A])(f: (B, A) => B): B = ???
+  def foldLeft[A, B](initialValue: B, list: List[A])(f: (B, A) => B): B = {
+    def fl(acc:B, l:List[A]) : B = l match {
+      case Nil => acc
+      case h :: t => fl(f(acc, h), t)
+    }
+
+    fl(initialValue, list)
+  }
 
 }
