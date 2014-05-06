@@ -13,4 +13,5 @@ To run the program simply type `run` in the `sbt` console.
 
 ## Completing the exercises
 
-I've keep this quite simple.  Everything you need is in `src/main/scala/App.scala`.  Go nuts.
+I've keep this quite simple.  There are four packages, covering the areas we will be covering in this course.
+Have fun.  Remember the types are the gateway to the solution.  Avoid mutability at all costs.
