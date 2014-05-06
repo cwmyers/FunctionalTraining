@@ -52,6 +52,7 @@ object RecursionExercises1 {
   // Follow the types.  You've done a great job getting here. Follow the types.
   def flatMap[A, B](x: List[A], f: A => List[B]): List[B] = ???
 
+  def maximum(x: List[Int]): Int = ???
 
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
@@ -73,6 +74,8 @@ object RecursionExercises1 {
       List(List('a', 'b', 'c'), List('d', 'e', 'f'), List('h', 'i', 'j'))))
 
     println("Run a flatMap over List(hello, world) with function split = List(h,e,l,l,o,w,o,r,l,d): " + flatMap(List("hello", "world"), (_: String).toCharArray.toList))
+
+    println("maxium of List(4,3,5,7,1,2,6,3,4,5,6) = 7: " + maximum(List(4, 3, 5, 7, 1, 2, 6, 3, 4, 5, 6)))
 
   }
 }
