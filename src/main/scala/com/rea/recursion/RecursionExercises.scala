@@ -52,6 +52,7 @@ object RecursionExercises1 {
   // Follow the types.  You've done a great job getting here. Follow the types.
   def flatMap[A, B](x: List[A], f: A => List[B]): List[B] = ???
 
+  // Maximum of the empty list is 0
   def maximum(x: List[Int]): Int = ???
 
   def main(args: Array[String]) = {
