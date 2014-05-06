@@ -49,6 +49,10 @@ object RecursionExercises1 {
   // solution to solve this one?
   def flatten[A](x: List[List[A]]): List[A] = ???
 
+  // Follow the types.  You've done a great job getting here. Follow the types.
+  def flatMap[A, B](x: List[A], f: A => List[B]): List[B] = ???
+
+
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
     println("0 + 34 = 34: " + add(0, 34))
