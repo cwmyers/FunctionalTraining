@@ -4,6 +4,22 @@ import scala.annotation.tailrec
 
 
 // Taken from http://tmorris.net/posts/scala-exercises-for-beginners/index.html
+
+/**
+ * Ok here are the rules.
+ *
+ * You can't use any of the standard list functions, like map, filter, flatMap, append etc.
+ *
+ * You CAN and are encouraged to use the solutions from the exercises below to solve the harder
+ * ones towards the end.
+ *
+ * Keep an eye out for repetition and similarities between your answers.
+ *
+ * REMEMBER: Follow the types, they almost always guide you to the solution.  If it compiles and looks a little
+ * too simple, it's probably correct.  As Sherlock Holmes once said, "Each one is suggestive, together they are
+ * most certainly conclusive."
+ *
+ */
 object RecursionExercises1 {
 
   def plusOne(n: Int) = n + 1
@@ -61,6 +77,13 @@ object RecursionExercises1 {
     case Nil => y
     case h :: t => h :: append(t, y)
   }
+
+  // Flatten a list of lists to a single list.  Remember you can't use list.flatten.  Can you use a previous
+  // solution to solve this one?
+  def flatten[A](x: List[List[A]]): List[A] = ???
+
+  // Follow the types.  You've done a great job getting here. Follow the types.
+  def flatMap[A, B](x: List[A], f: A => List[B]): List[B] = ???
 
   // Flatten a list of lists to a single list.  Remember you can't use list.flatten
   def flatten[A](x: List[List[A]]): List[A] = {
