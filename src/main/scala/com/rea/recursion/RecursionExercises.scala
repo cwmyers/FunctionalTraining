@@ -95,6 +95,7 @@ object RecursionExercises1 {
 
   // Maximum of the empty list is 0
   def maximum(x: List[Int]): Int = {
+    @tailrec
     def max(currentMax: Int, a: List[Int]): Int = a match {
       case Nil => currentMax
       case h :: t => if (h > currentMax) max(h, t) else max(currentMax, t)
@@ -105,7 +106,15 @@ object RecursionExercises1 {
 
 
   // Reverse a list
-  def reverse[A](x: List[A]): List[A] = ???
+  def reverse[A](x: List[A]): List[A] = {
+    @tailrec
+    def rev(acc:List[A], l:List[A]):List[A] =l match {
+      case Nil => acc
+      case h :: t => rev(h :: acc, t)
+    }
+
+    rev(Nil, x)
+  }
 
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
