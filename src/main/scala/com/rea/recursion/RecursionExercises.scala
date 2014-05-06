@@ -80,12 +80,6 @@ object RecursionExercises1 {
 
   // Flatten a list of lists to a single list.  Remember you can't use list.flatten.  Can you use a previous
   // solution to solve this one?
-  def flatten[A](x: List[List[A]]): List[A] = ???
-
-  // Follow the types.  You've done a great job getting here. Follow the types.
-  def flatMap[A, B](x: List[A], f: A => List[B]): List[B] = ???
-
-  // Flatten a list of lists to a single list.  Remember you can't use list.flatten
   def flatten[A](x: List[List[A]]): List[A] = {
     @tailrec
     def flatten0(acc: List[A], l : List[List[A]]): List[A] = l match {
@@ -95,6 +89,9 @@ object RecursionExercises1 {
 
     flatten0(Nil, x)
   }
+
+  // Follow the types.  You've done a great job getting here. Follow the types.
+  def flatMap[A, B](x: List[A], f: A => List[B]): List[B] = flatten(map(x, f))
 
 
   def main(args: Array[String]) = {
