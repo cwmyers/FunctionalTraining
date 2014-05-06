@@ -69,8 +69,10 @@ object RecursionExercises1 {
 
     println("Append List(a,b,c) with List(d,e,f) = List(a,b,c,d,e,f): " + append(List('a', 'b', 'c'), List('d', 'e', 'f')))
 
-    println("Flatten a List(List(a,b,c),List(e,f,g), List(h,i,j)) = List(a,b,c,d,e,f,g,h,i,j) " + flatten(
+    println("Flatten a List(List(a,b,c),List(e,f,g), List(h,i,j)) = List(a,b,c,d,e,f,g,h,i,j): " + flatten(
       List(List('a', 'b', 'c'), List('d', 'e', 'f'), List('h', 'i', 'j'))))
+
+    println("Run a flatMap over List(hello, world) with function split = List(h,e,l,l,o,w,o,r,l,d): " + flatMap(List("hello", "world"), {a:String => a.split("").toList})    )
 
   }
 }
