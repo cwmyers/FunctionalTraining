@@ -101,6 +101,8 @@ object RecursionExercises1 {
 
     max(0,x)
   }
+  // Maximum of the empty list is 0
+  def maximum(x: List[Int]): Int = ???
 
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
