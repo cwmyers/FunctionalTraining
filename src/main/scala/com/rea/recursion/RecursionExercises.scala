@@ -55,6 +55,9 @@ object RecursionExercises1 {
   // Maximum of the empty list is 0
   def maximum(x: List[Int]): Int = ???
 
+  // Reverse a list
+  def reverse[A](x: List[A]): List[A] = ???
+
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
     println("0 + 34 = 34: " + add(0, 34))
@@ -77,6 +80,8 @@ object RecursionExercises1 {
     println("Run a flatMap over List(hello, world) with function split = List(h,e,l,l,o,w,o,r,l,d): " + flatMap(List("hello", "world"), (_: String).toCharArray.toList))
 
     println("maxium of List(4,3,5,7,1,2,6,3,4,5,6) = 7: " + maximum(List(4, 3, 5, 7, 1, 2, 6, 3, 4, 5, 6)))
+
+    println("Reverse a List(1,2,3,4,5,6) = List(6,5,4,3,2,1) : " + reverse(List(1,2,3,4,5,6)))
 
   }
 }
