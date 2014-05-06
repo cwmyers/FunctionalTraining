@@ -2,6 +2,22 @@ package com.rea.recursion
 
 
 // Taken from http://tmorris.net/posts/scala-exercises-for-beginners/index.html
+
+/**
+ * Ok here are the rules.
+ *
+ * You can't use any of the standard list functions, like map, filter, flatMap, append etc.
+ *
+ * You CAN and are encouraged to use the solutions from the exercises below to solve the harder
+ * ones towards the end.
+ *
+ * Keep an eye out for repetition and similarities between your answers.
+ *
+ * REMEMBER: Follow the types, they almost always guide you to the solution.  If it compiles and looks a little
+ * too simple, it's probably correct.  As Sherlock Holmes once said, "Each one is suggestive, together they are
+ * most certainly conclusive."
+ *
+ */
 object RecursionExercises1 {
 
   def plusOne(n: Int) = n + 1
@@ -29,7 +45,8 @@ object RecursionExercises1 {
   // This pattern should be familiar by now... psst... look at add.
   def append[A](x: List[A], y: List[A]): List[A] = ???
 
-  // Flatten a list of lists to a single list.  Remember you can't use list.flatten
+  // Flatten a list of lists to a single list.  Remember you can't use list.flatten.  Can you use a previous
+  // solution to solve this one?
   def flatten[A](x: List[List[A]]): List[A] = ???
 
   def main(args: Array[String]) = {
