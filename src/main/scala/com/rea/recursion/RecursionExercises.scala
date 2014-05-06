@@ -63,7 +63,16 @@ object RecursionExercises1 {
   }
 
   // Flatten a list of lists to a single list.  Remember you can't use list.flatten
-  def flatten[A](x: List[List[A]]): List[A] = ???
+  def flatten[A](x: List[List[A]]): List[A] = {
+    @tailrec
+    def flatten0(acc: List[A], l : List[List[A]]): List[A] = l match {
+      case Nil => acc
+      case h :: t => flatten0(append(acc, h), t)
+    }
+
+    flatten0(Nil, x)
+  }
+
 
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
