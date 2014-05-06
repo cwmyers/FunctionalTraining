@@ -29,6 +29,9 @@ object RecursionExercises1 {
   // This pattern should be familiar by now... psst... look at add.
   def append[A](x: List[A], y: List[A]): List[A] = ???
 
+  // Flatten a list of lists to a single list.  Remember you can't use list.flatten
+  def flatten[A](x: List[List[A]]): List[A] = ???
+
   def main(args: Array[String]) = {
     println("10 + 34 = 44: " + add(10, 34))
     println("0 + 34 = 34: " + add(0, 34))
@@ -44,6 +47,9 @@ object RecursionExercises1 {
     }))
 
     println("Append List(a,b,c) with List(d,e,f) = List(a,b,c,d,e,f): " + append(List('a', 'b', 'c'), List('d', 'e', 'f')))
+
+    println("Flatten a List(List(a,b,c),List(e,f,g), List(h,i,j)) = List(a,b,c,d,e,f,g,h,i,j) " + flatten(
+      List(List('a', 'b', 'c'), List('d', 'e', 'f'), List('h', 'i', 'j'))))
 
   }
 }
