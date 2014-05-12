@@ -1,5 +1,9 @@
 package com.rea.higherorder
 
+/*
+ * DO NOT ATTEMPT these exercises until you've completed the recursion ones.
+ */
+
 object FoldingExercises {
 
   /**
