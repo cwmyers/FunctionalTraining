@@ -28,14 +28,12 @@ object OptionalExercises2 {
   // Will either return "Connected to rea.com" or "not connected"
   def connectToReaHostsOnly(host: String): String = hosts.get(host)
     .flatMap(domain => if (domain.contains("rea.com")) Some(domain) else None)
-    .map(createConnection)
-    .getOrElse("not connected")
+    .fold("not connected")(createConnection)
 
   def connectToReaHostsOnly2(host: String): String = hosts.get(host)
-    .filter(_.endsWith("rea.com")).map(createConnection)
-    .getOrElse("not connected")
+    .filter(_.endsWith("rea.com")).fold("not connected")(createConnection)
 
-  def createConnection(domain: String): String = s"Connected to $domain"
+  def createConnection(domain: String): String = s"connected to $domain"
 
 }
 
