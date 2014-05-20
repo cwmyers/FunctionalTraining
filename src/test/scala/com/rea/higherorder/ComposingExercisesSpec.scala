@@ -12,7 +12,7 @@ class ComposingExercisesSpec extends Specification {
     }
 
     "addTwoMinusThreePrettyPrint" in {
-      ComposingExercises.addTwoMinusThreePrettyPrint(2) === 1
+      ComposingExercises.addTwoMinusThreePrettyPrint(2) === "The number is 1"
     }
   }
 
