@@ -2,9 +2,11 @@ package com.rea.typesafety
 
 import org.specs2.mutable.Specification
 import ValidationExercises._
-import scalaz.{Failure, Success}
+import scalaz.{NonEmptyList, Failure, Success}
+import org.specs2.scalaz.ValidationMatchers
 
-class ValidationExercisesSpec extends Specification {
+class ValidationExercisesSpec extends Specification with ValidationMatchers {
+
 
   val allBad = Map[String, String]()
   val goodInput = Map("firstName" -> "Vladimir", "lastName" -> "Putin", "password" -> "crimea14")
@@ -14,30 +16,30 @@ class ValidationExercisesSpec extends Specification {
   val noFirstName = goodInput - "firstName"
   val noLastName = goodInput - "lastName"
 
-  
+
   "Good input" in {
-    validateInput(goodInput) === Success(Person("Vladimir", "Putin", "crimea14"))
+    validateInput(goodInput) should beSuccessful(Person("Vladimir", "Putin", "crimea14"))
   }
 
   "All Bad input" in {
-    validateInput(allBad) === Failure(List())
+    validateInput(allBad) should beFailing(NonEmptyList(keyNotFound("firstName"), keyNotFound("lastName"), keyNotFound("password")))
   }
 
   "password too short" in {
-    validateInput(passwordIsTooShort) === Failure(List())
+    validateInput(passwordIsTooShort) should beFailing(NonEmptyList(passwordTooShort))
   }
 
   "password too weak" in {
-    validateInput(passwordNoNumbers)
+    validateInput(passwordNoNumbers) should beFailing(NonEmptyList(passwordTooWeak))
   }
   "password too short and too weak" in {
-    validateInput(passwordNoNumbersAndTooShort)
+    validateInput(passwordNoNumbersAndTooShort) should beFailing(NonEmptyList(passwordTooShort, passwordTooWeak))
   }
   "no first name" in {
-    validateInput(noFirstName)
+    validateInput(noFirstName) should beFailing(NonEmptyList(keyNotFound("firstName")))
   }
   "no last name" in {
-    validateInput(noLastName)
+    validateInput(noLastName) should beFailing(NonEmptyList(keyNotFound("lastName")))
   }
 
 
