@@ -1,10 +1,7 @@
 package com.rea.higherorder
 
 object ComposingExercises {
-  def main(args: Array[String]) {
-    println(addTwoMinusThree(6) + " should equal 5")
-    println(addTwoMinusThreePrettyPrint(2) + " should equal 'The number is 1'")
-  }
+
 
   def add(a: Int, b: Int) = a + b
 
