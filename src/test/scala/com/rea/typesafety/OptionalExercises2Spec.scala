@@ -28,11 +28,11 @@ class OptionalExercises2Spec extends Specification {
     }
 
     "not be connected to netflix.com for host3" in {
-      connectToReaHostsOnly("host3") === "not connected to netflix.com"
+      connectToReaHostsOnly("host3") === "not connected"
     }
 
     "not be connected to unknown for host4" in {
-      connectToReaHostsOnly("host4") === "not connected to unknown host"
+      connectToReaHostsOnly("host4") === "not connected"
     }
   }
 
