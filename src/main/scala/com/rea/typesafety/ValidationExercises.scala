@@ -5,7 +5,8 @@ import scalaz._, Scalaz._
 object ValidationExercises {
   type VE[+A] = ValidationNel[ErrorCode, A]
 
-   def validateKey(key: String, input: Map[String, String]): ValidationNel[ErrorCode, String] = ???
+  def validateKey(input: Map[String, String], key: String): ValidationNel[ErrorCode, String] =
+    input.get(key).toSuccess(keyNotFound(key)).toValidationNel
 
   def nameValidation(name: String, label: String): ValidationNel[ErrorCode, String] =
     if (!name.isEmpty) name.successNel else nameIsEmpty(label).failNel
@@ -16,9 +17,22 @@ object ValidationExercises {
   def passwordLengthValidation(password: String): ValidationNel[ErrorCode, String] =
     if (password.length >= 8) password.successNel else passwordTooShort.failNel
 
-  def validateInput(input: Map[String, String]): ValidationNel[ErrorCode, Person] = ???
+  def validateInput(input: Map[String, String]): ValidationNel[ErrorCode, Person] = {
+    val vKey = validateKey(input, _: String)
+    def vName(name: String) = vKey(name).flatMap(nameValidation(_, name))
 
- 
+    val firstName = vName("firstName")
+    val lastName = vName("lastName")
+
+
+    val password = vKey("password").flatMap(
+      password => passwordLengthValidation(password) <* passwordStrengthValidation(password)
+    )
+
+    Apply[VE].apply3(firstName, lastName, password)(Person)
+
+  }
+
 
 }
 
