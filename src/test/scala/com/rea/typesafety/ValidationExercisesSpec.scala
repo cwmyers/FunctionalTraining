@@ -7,6 +7,7 @@ import org.specs2.scalaz.ValidationMatchers
 
 class ValidationExercisesSpec extends Specification with ValidationMatchers {
 
+
   val allBad = Map[String, String]()
   val goodInput = Map("firstName" -> "Vladimir", "lastName" -> "Putin", "password" -> "crimea14")
   val passwordIsTooShort = goodInput + ("password" -> "crim3a")
