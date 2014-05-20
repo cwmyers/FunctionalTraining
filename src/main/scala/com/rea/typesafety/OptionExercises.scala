@@ -2,12 +2,6 @@ package com.rea.typesafety
 
 
 object OptionalExercises1 {
-  def main(args: Array[String]) {
-    println("The host name is: " + getFromConfig("host").getOrElse("Not Found"))
-    println("The length of host name is: " + lengthOfHost().getOrElse(0))
-    println("The port plus 1000 is: " + portPlus1000().getOrElse(0) + " (expecting 9080)")
-  }
-
   val config = Map[String, String]("host" -> "rea.com", "port" -> "8080")
 
   def getFromConfig(key: String): Option[String] = ???
@@ -28,7 +22,7 @@ object OptionalExercises2 {
   // Will either return "Connected to rea.com" or "not connected"
   def connectToReaHostsOnly(host: String): String = ???
 
-  def createConnection(domain: String): String = s"Connected to $domain"
+  def createConnection(domain: String): String = s"connected to $domain"
 
 }
 
