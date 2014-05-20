@@ -25,15 +25,15 @@ class FoldingExercisesSpec extends Specification {
   }
 
   "Remove elements under 4 for List(1,2,3,4,5,6) = List(4,5,6): " in {
-    filter(List(1, 2, 3, 4, 5, 6), 4 < (_:Int)) === List(4, 5, 6)
+    filter(List(1, 2, 3, 4, 5, 6), 4 <= (_:Int)) === List(4, 5, 6)
   }
 
   "Append List(a,b,c) with List(d,e,f) = List(a,b,c,d,e,f): " in {
     append(List('a', 'b', 'c'), List('d', 'e', 'f')) === List('a', 'b', 'c', 'd', 'e', 'f')
   }
 
-  "Flatten a List(List(a,b,c),List(e,f,g), List(h,i,j)) = List(a,b,c,d,e,f,g,h,i,j): " in {
-    flatten(List(List('a', 'b', 'c'), List('d', 'e', 'f'), List('h', 'i', 'j'))) === List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j')
+  "Flatten a List(List(a,b,c),List(d,e,f,g), List(h,i,j)) = List(a,b,c,d,e,f,g,h,i,j): " in {
+    flatten(List(List('a', 'b', 'c'), List('d', 'e', 'f','g'), List('h', 'i', 'j'))) === List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j')
   }
 
   "Run a flatMap over List(hello, world) with function split = List(h,e,l,l,o,w,o,r,l,d): " in {
