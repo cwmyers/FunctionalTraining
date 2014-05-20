@@ -58,30 +58,4 @@ object RecursionExercises1 {
   // Reverse a list
   def reverse[A](x: List[A]): List[A] = ???
 
-  def main(args: Array[String]) = {
-    println("10 + 34 = 44: " + add(10, 34))
-    println("0 + 34 = 34: " + add(0, 34))
-    println("0 + 0 = 0: " + add(0, 0))
-
-    println("Sum of List(1,2,3,4,5,6) = 21: " + sum(List(1, 2, 3, 4, 5, 6)))
-    println("Length of List(1,2,3,4,5,6) = 6: " + length(List(1, 2, 3, 4, 5, 6)))
-
-    println("Add one to List(1,2,3,4,5,6) = List(2,3,4,5,6,7): " + map(List(1, 2, 3, 4, 5, 6), plusOne))
-
-    println("Remove elements under 4 for List(1,2,3,4,5,6) = List(4,5,6): " + filter(List(1, 2, 3, 4, 5, 6), {
-      x: Int => x >= 4
-    }))
-
-    println("Append List(a,b,c) with List(d,e,f) = List(a,b,c,d,e,f): " + append(List('a', 'b', 'c'), List('d', 'e', 'f')))
-
-    println("Flatten a List(List(a,b,c),List(e,f,g), List(h,i,j)) = List(a,b,c,d,e,f,g,h,i,j): " + flatten(
-      List(List('a', 'b', 'c'), List('d', 'e', 'f'), List('h', 'i', 'j'))))
-
-    println("Run a flatMap over List(hello, world) with function split = List(h,e,l,l,o,w,o,r,l,d): " + flatMap(List("hello", "world"), (_: String).toCharArray.toList))
-
-    println("maxium of List(4,3,5,7,1,2,6,3,4,5,6) = 7: " + maximum(List(4, 3, 5, 7, 1, 2, 6, 3, 4, 5, 6)))
-
-    println("Reverse a List(1,2,3,4,5,6) = List(6,5,4,3,2,1) : " + reverse(List(1,2,3,4,5,6)))
-
-  }
 }
