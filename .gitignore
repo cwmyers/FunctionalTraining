@@ -1,6 +1,9 @@
 # Lines starting with '#' are considered comments.
 .DS_Store
 .cache/
+.cache
+.classpath
+.project
 .idea
 .idea_modules
 Thumbs.db
