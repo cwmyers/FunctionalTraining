@@ -7,6 +7,6 @@
 .idea
 .idea_modules
 Thumbs.db
-
+.lib
 # sbt
 target/
