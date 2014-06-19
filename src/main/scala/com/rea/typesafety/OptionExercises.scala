@@ -31,3 +31,28 @@ object OptionalExercises2 {
 
 }
 
+object OptionalExercises3 {
+
+  sealed trait Maybe[A]
+
+  case class Just(get: A) extends Maybe[A]
+
+  case object Nothing extends Maybe[Nothing]
+
+  def flatMap[A, B](m: Maybe[A], f: A => Maybe[B]): Maybe[B] = ???
+
+  def map[A, B](m: Maybe[A], f: A => B): Maybe[B] = ???
+
+  def fold[A,B](m: Maybe[A], default: => B, f: A => B): B = ???
+
+  def orElse[A](m: Maybe[A], otherwise: => Maybe[A]): Maybe[A] = ???
+
+  def orSome[A](m:Maybe[A], default: => A): A = ???
+
+  def map2[A,B,C](m1:Maybe[A], m2:Maybe[B], f: (A,B) => C):Maybe[C] = ???
+
+  def sequence[A](l: List[Maybe[A]]): Maybe[List[A]] = ???
+
+
+}
+
