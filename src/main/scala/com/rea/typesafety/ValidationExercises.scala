@@ -6,7 +6,7 @@ object ValidationExercises {
 
   def validateKey(key: String, input: Map[String, String]): ValidationNel[ErrorCode, String] = ???
 
-  def nameValidation(name: String): ValidationNel[ErrorCode, String] = ???
+  def nameValidation(name: String, label: String): ValidationNel[ErrorCode, String] = ???
 
   def passwordStrengthValidation(password: String): ValidationNel[ErrorCode, String] = ???
 
