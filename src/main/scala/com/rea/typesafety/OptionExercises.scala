@@ -30,7 +30,7 @@ object OptionalExercises3 {
 
   sealed trait Maybe[A]
 
-  case class Just(get: A) extends Maybe[A]
+  case class Just[A](get: A) extends Maybe[A]
 
   case object Nothing extends Maybe[Nothing]
 
