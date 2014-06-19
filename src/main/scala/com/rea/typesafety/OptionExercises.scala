@@ -38,13 +38,13 @@ object OptionalExercises3 {
 
   def map[A, B](m: Maybe[A], f: A => B): Maybe[B] = ???
 
-  def fold[A,B](m: Maybe[A], default: => B, f: A => B): B = ???
+  def fold[A, B](m: Maybe[A], default: => B, f: A => B): B = ???
 
   def orElse[A](m: Maybe[A], otherwise: => Maybe[A]): Maybe[A] = ???
 
-  def orSome[A](m:Maybe[A], default: => A): A = ???
+  def orSome[A](m: Maybe[A], default: => A): A = ???
 
-  def map2[A,B,C](m1:Maybe[A], m2:Maybe[B], f: (A,B) => C):Maybe[C] = ???
+  def map2[A, B, C](f: (A, B) => C)(m1: Maybe[A], m2: Maybe[B]): Maybe[C] = ???
 
   def sequence[A](l: List[Maybe[A]]): Maybe[List[A]] = ???
 
