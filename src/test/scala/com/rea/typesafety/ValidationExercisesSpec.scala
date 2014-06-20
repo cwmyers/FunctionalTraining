@@ -2,7 +2,7 @@ package com.rea.typesafety
 
 import org.specs2.mutable.Specification
 import ValidationExercises._
-import scalaz.{NonEmptyList, Failure, Success}
+import scalaz.NonEmptyList
 import org.specs2.scalaz.ValidationMatchers
 
 class ValidationExercisesSpec extends Specification with ValidationMatchers {
@@ -15,7 +15,8 @@ class ValidationExercisesSpec extends Specification with ValidationMatchers {
   val passwordNoNumbersAndTooShort = goodInput + ("password" -> "crime")
   val noFirstName = goodInput - "firstName"
   val noLastName = goodInput - "lastName"
-
+  val emptyFirstName = goodInput + ("firstName" -> "")
+  val emptyLastName = goodInput + ("lastName" -> "")
 
   "Good input" in {
     validateInput(goodInput) should beSuccessful(Person("Vladimir", "Putin", "crimea14"))
@@ -41,6 +42,11 @@ class ValidationExercisesSpec extends Specification with ValidationMatchers {
   "no last name" in {
     validateInput(noLastName) should beFailing(NonEmptyList(keyNotFound("lastName")))
   }
-
+  "empty first name" in {
+    validateInput(emptyFirstName) should beFailing(NonEmptyList(nameIsEmpty("firstName")))
+  }
+  "empty last name" in {
+    validateInput(emptyLastName) should beFailing(NonEmptyList(nameIsEmpty("lastName")))
+  }
 
 }

@@ -8,7 +8,7 @@ object RefTransExercises {
     if (p1 > p2)
       println("player one is the winner!")
     else
-      println("player two is the winner")
+      println("player two is the winner!")
 
   def printWinner2(p1: Int, p2: Int) =
     println(determineWinner(p1, p2) + " is the winner")

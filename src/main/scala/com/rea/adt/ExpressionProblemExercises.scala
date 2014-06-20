@@ -28,6 +28,6 @@ object Expr {
   /**
    * Show, using English lower-case words "and", "or", "not", "true", "false"
    */
-  def show(): String = ???
+  def show(expr: Expr): String = ???
   
 }
