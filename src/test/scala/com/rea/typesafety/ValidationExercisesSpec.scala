@@ -2,7 +2,7 @@ package com.rea.typesafety
 
 import org.specs2.mutable.Specification
 import ValidationExercises._
-import scalaz.{NonEmptyList, Failure, Success}
+import scalaz.NonEmptyList
 import org.specs2.scalaz.ValidationMatchers
 
 class ValidationExercisesSpec extends Specification with ValidationMatchers {
