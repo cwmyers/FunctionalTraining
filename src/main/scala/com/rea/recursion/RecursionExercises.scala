@@ -17,6 +17,8 @@ package com.rea.recursion
  * too simple, it's probably correct.  As Sherlock Holmes once said, "Each one is suggestive, together they are
  * most certainly conclusive."
  *
+ * See if you can make your solution tail recursive, where possible.
+ *
  */
 object RecursionExercises1 {
 
