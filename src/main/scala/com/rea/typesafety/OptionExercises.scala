@@ -28,7 +28,7 @@ object OptionalExercises2 {
 
 object OptionalExercises3 {
 
-  sealed trait Maybe[A]
+  sealed trait Maybe[+A]
 
   case class Just[A](get: A) extends Maybe[A]
 
