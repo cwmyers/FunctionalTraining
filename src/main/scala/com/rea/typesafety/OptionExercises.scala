@@ -48,7 +48,7 @@ object OptionalExercises3 {
 
   def sequence[A](l: List[Maybe[A]]): Maybe[List[A]] = ???
 
-  def ap[A, B](m: Maybe[A => B]): Maybe[B] = ???
+  def ap[A, B](m1: Maybe[A], m2: Maybe[A => B]): Maybe[B] = ???
 
 }
 
