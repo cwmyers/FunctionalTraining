@@ -65,16 +65,17 @@ object OptionalExercises3 {
   }
 
   def map2[A, B, C](f: (A, B) => C)(m1: Maybe[A], m2: Maybe[B]): Maybe[C] = flatMap(m1, { a: A =>
-    map(m2, { b: B => f(a, b)})
+    map(m2, { b: B => f(a, b) })
   })
 
   def sequence[A](l: List[Maybe[A]]): Maybe[List[A]] = l.foldRight[Maybe[List[A]]](Just(Nil)) {
-    map2((_ :A) :: (_ : List[A]))
+    map2((_: A) :: (_: List[A]))
   }
 
 
-
-  def ap[A, B](m1: Maybe[A], m2: Maybe[A => B]): Maybe[B] = ???
+  def ap[A, B](m1: Maybe[A], m2: Maybe[A => B]): Maybe[B] = flatMap(m1, { a: A =>
+    map(m2, { (f: A => B) => f(a) })
+  })
 
 }
 
