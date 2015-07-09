@@ -74,6 +74,7 @@ object OptionalExercises3 {
 
 
 
+  def ap[A, B](m: Maybe[A => B]): Maybe[B] = ???
 
 }
 
