@@ -13,4 +13,8 @@ class BoxExercisesSpec extends Specification {
     Box(4).flatMap(b => Box(b + 2)) === Box(6)
   }
 
+  "Box[Box['Cat']] joined = Box['Cat']" in {
+    Box.join[String](Box(Box("Cat"))) === Box("Cat")
+  }
+
 }
