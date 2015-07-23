@@ -9,5 +9,10 @@ case class Box[A](get: A) {
   def unit[B](b: B) = Box(b)
 
   def flatMap[B](f: A => Box[B]): Box[B] = f(this.get)
+
+}
+
+object Box {
+  def join[A](box: Box[Box[A]]): Box[A] = ???
 }
 
