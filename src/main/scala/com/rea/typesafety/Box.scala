@@ -13,6 +13,6 @@ case class Box[A](get: A) {
 }
 
 object Box {
-  def join[A](box: Box[Box[A]]): Box[A] = ???
+  def join[A](box: Box[Box[A]]): Box[A] = box.flatMap(identity)
 }
 
