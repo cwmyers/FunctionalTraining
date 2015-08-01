@@ -6,7 +6,9 @@ package com.rea.recursion
 /**
  * Ok here are the rules.
  *
- * You can't use any of the standard list functions, like map, filter, flatMap, append etc.
+ * You can't use any of the standard list functions, like `map`, `filter`, `flatMap`, `append`, `:::`, `:+`, etc.
+ * 
+ * But you can always use `::` to construct a new list by prepending an element to another list.
  *
  * You CAN and are encouraged to use the solutions from the exercises below to solve the harder
  * ones towards the end.
