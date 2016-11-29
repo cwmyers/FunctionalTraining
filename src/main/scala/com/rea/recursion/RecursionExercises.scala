@@ -1,6 +1,5 @@
 package com.rea.recursion
 
-
 // Taken from http://tmorris.net/posts/scala-exercises-for-beginners/index.html
 
 /**
@@ -22,7 +21,8 @@ package com.rea.recursion
  * See if you can make your solution tail recursive, where possible.
  *
  */
-object RecursionExercises1 {
+
+object RecursionExercises {
 
   def plusOne(n: Int) = n + 1
 
@@ -45,7 +45,6 @@ object RecursionExercises1 {
 
   // Given a function from A => Boolean, return a list with only those item where the function returned true.
   def filter[A](x: List[A], f: A => Boolean): List[A] = ???
-
   // This pattern should be familiar by now... psst... look at add.
   def append[A](x: List[A], y: List[A]): List[A] = ???
 
@@ -61,5 +60,4 @@ object RecursionExercises1 {
 
   // Reverse a list
   def reverse[A](x: List[A]): List[A] = ???
-
 }
