@@ -12,7 +12,7 @@ class FoldingExercisesSpec extends Specification {
     }
 
     "reconstructAListWithFoldLeft" in {
-      foldLeft(List[Int](), List(1, 2, 3))((a, e) => e :: a) === List(1, 2, 3)
+      foldLeft(List[Int](), List(1, 2, 3))((a, e) => e :: a) === List(3, 2, 1)
     }
 
     "sumAListWithFoldRight" in {
