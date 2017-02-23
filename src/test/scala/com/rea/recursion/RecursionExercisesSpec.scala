@@ -1,16 +1,18 @@
 package com.rea.recursion
 
 import org.specs2.mutable.Specification
-import RecursionExercises1._
+import RecursionExercises._
 
-class RecursionExercises1Spec extends Specification {
+class RecursionExercisesSpec extends Specification {
 
   "10 + 34 = 44" in {
     add(10, 34) === 44
   }
+
   "0 + 34 = 34" in {
     add(0, 34) === 34
   }
+
   "0 + 0 = 0" in {
     add(0, 0) === 0
   }
@@ -20,11 +22,11 @@ class RecursionExercises1Spec extends Specification {
   }
 
   "Length of List(1,2,3,4,5,6) = 6" in {
-    RecursionExercises1.length(List(1, 2, 3, 4, 5, 6)) === 6
+    RecursionExercises.length(List(1, 2, 3, 4, 5, 6)) === 6
   }
 
   "Add one to List(1,2,3,4,5,6) = List(2,3,4,5,6,7)" in {
-    RecursionExercises1.map(List(1, 2, 3, 4, 5, 6), plusOne) === List(2, 3, 4, 5, 6, 7)
+    RecursionExercises.map(List(1, 2, 3, 4, 5, 6), plusOne) === List(2, 3, 4, 5, 6, 7)
   }
 
   "Remove elements under 4 for List(1,2,3,4,5,6) = List(4,5,6): " in {
@@ -52,6 +54,4 @@ class RecursionExercises1Spec extends Specification {
   "Reverse a List(1,2,3,4,5,6) = List(6,5,4,3,2,1)" in {
     reverse(List(1, 2, 3, 4, 5, 6)) === List(6, 5, 4, 3, 2, 1)
   }
-
-
 }
