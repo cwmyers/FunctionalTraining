@@ -55,7 +55,7 @@ object ComposingExercises {
   def addTwo: Int => Int = x => add(x, 2)
 
   // Write a boring subtract function
-  def subtract(a: Int, b: Int): Int = ???
+  def subtract(a: Int, b: Int): Int = a - b
 
   // We want to partially apply subtract
   def minusThree: Int => Int = subtract(_,3)

@@ -16,7 +16,12 @@ object Expr {
    * Evaluate the expression.
    */
 
-  def eval(expr: Expr): Boolean = ???
+  def eval(expr: Expr): Boolean = expr match {
+    case Const(v) => v
+    case And(a, b) => eval(a) && eval(b)
+    case Or(a, b) => eval(a) || eval(b)
+    case Not(e) => !eval(e)
+  }
   
   /**
    * Normalise the expression, such that:
@@ -32,11 +37,21 @@ object Expr {
    * (Hint: You can and should normalize recursively)
    */
 
-  def normalise(expr: Expr): Expr = ???
+  def normalise(expr: Expr): Expr = expr match {
+    case Not(Not(e)) => normalise(e)
+    case And(Not(a), Not(b)) => Not(Or(normalise(a), normalise(b)))
+    case Or(Not(a), Not(b)) => Not(And(normalise(a), normalise(b)))
+    case e => normalise(e)
+  }
   
   /**
    * Show, using English lower-case words "and", "or", "not", "true", "false"
    */
   
-  def show(expr: Expr): String = ???
+  def show(expr: Expr): String = expr match {
+    case Const(v) => v.toString
+    case And(a, b) => s"$a and $b"
+    case Or(a, b) => s"$a or $b"
+    case Not(a) => s"not $a"
+  }
 }
