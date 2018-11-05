@@ -15,4 +15,4 @@ libraryDependencies ++= Seq(
 
 scalacOptions in Test ++= Seq("-Yrangepos")
 
-initialCommands := "import com.rea.higherorder._; import com.rea.typesafety._; import Composing._; import ValidationExercises._"
+initialCommands := "import com.ft.rea.higherorder._; import com.ft.rea.typesafety._; import Composing._; import ValidationExercises._"
