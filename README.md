@@ -13,15 +13,15 @@ To run the exercises simply type `test` in the `sbt` console.
 
     > test
 
-To run a single exercise type `testOnly com.rea.<package>.<classnameSpec>`
+To run a single exercise type `testOnly ft.<package>.<classnameSpec>`
 
-    > testOnly com.rea.higherorder.ComposingExercisesSpec
+    > testOnly ft.higherorder.ComposingExercisesSpec
 
 ## Completing the exercises
 
 I've kept this quite simple.
 
-There are four packages, covering the areas we will be covering in this course.
+There are five packages, covering the areas we will be covering in this course.
 
 Remember:
 - The types are the gateway to the solution.
