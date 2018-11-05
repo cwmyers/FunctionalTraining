@@ -1,7 +1,7 @@
 package com.rea.referentialtransparency
 
-import scalaz._, Scalaz._
-import scalaz.effect.IO
+import cats.effect.IO
+
 import scala.io.StdIn
 
 object IOExercises {
@@ -16,6 +16,6 @@ object IOExercises {
 
   def readFromConsoleAndWriteToConsole: IO[Unit] = readLineFromConsole flatMap writeToConsole
 
-  def run(effect: IO[Unit]): Unit = effect.unsafePerformIO()
+  def run(effect: IO[Unit]): Unit = effect.unsafeRunSync()
 
 }

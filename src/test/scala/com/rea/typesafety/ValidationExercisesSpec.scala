@@ -2,10 +2,10 @@ package com.rea.typesafety
 
 import org.specs2.mutable.Specification
 import ValidationExercises._
-import scalaz.NonEmptyList
-import org.specs2.scalaz.ValidationMatchers
+import cats.data.NonEmptyList
+import org.specs2.matcher.ValidatedMatchers
 
-class ValidationExercisesSpec extends Specification with ValidationMatchers {
+class ValidationExercisesSpec extends Specification with ValidatedMatchers {
 
 
   val allBad = Map[String, String]()
@@ -19,34 +19,34 @@ class ValidationExercisesSpec extends Specification with ValidationMatchers {
   val emptyLastName = goodInput + ("lastName" -> "")
 
   "Good input" in {
-    validateInput(goodInput) should beSuccessful(Person("Vladimir", "Putin", "crimea14"))
+    validateInput(goodInput) should beValid(Person("Vladimir", "Putin", "crimea14"))
   }
 
   "All Bad input" in {
-    validateInput(allBad) should beFailing(NonEmptyList(keyNotFound("firstName"), keyNotFound("lastName"), keyNotFound("password")))
+    validateInput(allBad) should beInvalid(NonEmptyList(keyNotFound("firstName"), List(keyNotFound("lastName"), keyNotFound("password"))))
   }
 
   "password too short" in {
-    validateInput(passwordIsTooShort) should beFailing(NonEmptyList(passwordTooShort))
+    validateInput(passwordIsTooShort) should beInvalid(NonEmptyList(passwordTooShort, Nil))
   }
 
   "password too weak" in {
-    validateInput(passwordNoNumbers) should beFailing(NonEmptyList(passwordTooWeak))
+    validateInput(passwordNoNumbers) should beInvalid(NonEmptyList(passwordTooWeak, Nil))
   }
   "password too short and too weak" in {
-    validateInput(passwordNoNumbersAndTooShort) should beFailing(NonEmptyList(passwordTooShort, passwordTooWeak))
+    validateInput(passwordNoNumbersAndTooShort) should beInvalid(NonEmptyList(passwordTooShort, List(passwordTooWeak)))
   }
   "no first name" in {
-    validateInput(noFirstName) should beFailing(NonEmptyList(keyNotFound("firstName")))
+    validateInput(noFirstName) should beInvalid(NonEmptyList(keyNotFound("firstName"), Nil))
   }
   "no last name" in {
-    validateInput(noLastName) should beFailing(NonEmptyList(keyNotFound("lastName")))
+    validateInput(noLastName) should beInvalid(NonEmptyList(keyNotFound("lastName"), Nil))
   }
   "empty first name" in {
-    validateInput(emptyFirstName) should beFailing(NonEmptyList(nameIsEmpty("firstName")))
+    validateInput(emptyFirstName) should beInvalid(NonEmptyList(nameIsEmpty("firstName"), Nil))
   }
   "empty last name" in {
-    validateInput(emptyLastName) should beFailing(NonEmptyList(nameIsEmpty("lastName")))
+    validateInput(emptyLastName) should beInvalid(NonEmptyList(nameIsEmpty("lastName"), Nil))
   }
 
 }
