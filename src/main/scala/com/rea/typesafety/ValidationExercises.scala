@@ -1,18 +1,19 @@
 package com.rea.typesafety
 
-import scalaz._, Scalaz._
+import cats.data.ValidatedNel
+import cats.implicits._
 
 object ValidationExercises {
 
-  def validateKey(key: String, input: Map[String, String]): ValidationNel[ErrorCode, String] = ???
+  def validateKey(key: String, input: Map[String, String]): ValidatedNel[ErrorCode, String] = ???
 
-  def nameValidation(name: String, label: String): ValidationNel[ErrorCode, String] = ???
+  def nameValidation(name: String, label: String): ValidatedNel[ErrorCode, String] = ???
 
-  def passwordStrengthValidation(password: String): ValidationNel[ErrorCode, String] = ???
+  def passwordStrengthValidation(password: String): ValidatedNel[ErrorCode, String] = ???
 
-  def passwordLengthValidation(password: String): ValidationNel[ErrorCode, String] = ???
+  def passwordLengthValidation(password: String): ValidatedNel[ErrorCode, String] = ???
 
-  def validateInput(input: Map[String, String]): ValidationNel[ErrorCode, Person] = ???
+  def validateInput(input: Map[String, String]): ValidatedNel[ErrorCode, Person] = ???
 
 
 }
@@ -34,17 +35,17 @@ case class nameIsEmpty(key: String) extends ErrorCode
 
 Interesting Validator combinators
 
-scala> val a:ValidationNel[String,String]  = "hi".successNel
-a: scalaz.ValidationNel[String,String] = Success(hi)
+scala> val a:ValidatedNel[String,String]  = "hi".successNel
+a: scalaz.ValidatedNel[String,String] = Success(hi)
 
-scala> val b:ValidationNel[String,String]  = "world".successNel
-b: scalaz.ValidationNel[String,String] = Success(world)
+scala> val b:ValidatedNel[String,String]  = "world".successNel
+b: scalaz.ValidatedNel[String,String] = Success(world)
 
-scala> val c:ValidationNel[String,String]  = "error1".failNel
-c: scalaz.ValidationNel[String,String] = Failure(NonEmptyList(error1))
+scala> val c:ValidatedNel[String,String]  = "error1".failNel
+c: scalaz.ValidatedNel[String,String] = Failure(NonEmptyList(error1))
 
-scala> val d:ValidationNel[String,String]  = "error2".failNel
-d: scalaz.ValidationNel[String,String] = Failure(NonEmptyList(error2))
+scala> val d:ValidatedNel[String,String]  = "error2".failNel
+d: scalaz.ValidatedNel[String,String] = Failure(NonEmptyList(error2))
 
 scala> a <* b
 res0: scalaz.Validation[scalaz.NonEmptyList[String],String] = Success(hi)

@@ -1,7 +1,6 @@
 package com.rea.referentialtransparency
 
-import scalaz._, Scalaz._
-import scalaz.effect.IO
+import cats.effect.IO
 
 object IOExercises {
 
