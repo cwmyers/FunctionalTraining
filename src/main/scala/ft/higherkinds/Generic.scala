@@ -1,8 +1,11 @@
 package ft.higherkinds
 
-import cats.effect.IO
+import cats.ApplicativeError
+import cats.effect.{IO, Sync}
+import cats.implicits._
 
 import scala.io.StdIn
+import scala.language.higherKinds
 
 /**
   * In this exercise we have some strong opinions on how we represent effects (using IO),
@@ -15,11 +18,14 @@ import scala.io.StdIn
   *
   * Step 1) Lift the Either and the Option into IO to get rid of the stair stepping
   * Step 2) Refactor to use the typeclass `Sync`
-  * Step 3) Refactor to use typeclass MonadError
+  * Step 3) Refactor to use typeclass MonadError or ApplicativeError
   * Step 4) How far can you push it?
   */
 
 object Generic {
+
+  type HasThrowableError[A[_]] = ApplicativeError[A, Throwable]
+
 
   val messages = Map(
     "1" -> "Hello!",
@@ -29,47 +35,46 @@ object Generic {
   )
 
   def main(args: Array[String]): Unit = {
-    selectMessage.attempt.unsafeRunSync() match {
+    selectMessage[IO].attempt.unsafeRunSync match {
       case Right(_) => ()
       case Left(e) => println(e.getMessage)
     }
   }
 
-  def selectMessage: IO[Unit] = for {
+  def selectMessage[F[_] : Sync]: F[Unit] = for {
+    // Observe how we have been able to flatten for-comprehension
     _ <- printLine("Please enter a number")
     input <- readLine
-    number <- validateNumber(input) match {
-        // Ugly stair stepping, how can we avoid?
-      case Right(m) => IO(m)
-      case Left(e) => IO.raiseError(new RuntimeException(e))
-    }
+    number <- validateNumber[F](input)
     _ <- printLine(s"You entered number $number")
-    message <- getMessage(number) match {
-      // Move ugly stair stepping, this time of a different type!
-      case Some(m) => IO(m)
-      case None => IO.raiseError(new RuntimeException("No message for that number"))
-    }
+    message <- getMessage[F](number, "No message for that number")
     _ <- printLine(message)
   } yield ()
 
 
-  private def printLine(string: String): IO[Unit] = IO {
+  private def printLine[F[_] : Sync](string: String): F[Unit] = Sync[F].delay {
     println(string)
   }
 
 
-  private def readLine: IO[String] = IO {
+  private def readLine[F[_] : Sync]: F[String] = Sync[F].delay {
     StdIn.readLine()
   }
 
 
-  def validateNumber(input: String): Either[String, String] = {
+  // Each function only demands what it cares about.  Here all we need is
+  //
+  def validateNumber[F[_] : HasThrowableError](input: String): F[String] = {
+    val AE = ApplicativeError[F, Throwable]
     if (input.matches("^\\d+$")) {
-      Right(input)
+      AE.pure(input)
     } else {
-      Left("Not a valid number")
+      AE.raiseError(new RuntimeException("Not a valid number"))
     }
   }
 
-  def getMessage(number:String): Option[String] = messages.get(number)
+  def getMessage[F[_] : HasThrowableError](number: String, message:String): F[String] = {
+    ApplicativeError.liftFromOption[F](messages.get(number), new RuntimeException(message))
+  }
+
 }
