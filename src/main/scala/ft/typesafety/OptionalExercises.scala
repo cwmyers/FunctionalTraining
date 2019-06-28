@@ -1,5 +1,8 @@
 package ft.typesafety
 
+import cats.Apply
+import cats.implicits._
+
 /**
   * Use pattern matching and recursion.  No vars, no loops, no overriding.
   *
@@ -97,6 +100,17 @@ object OptionalExercises2 {
   *
   */
 
+/*
+
+Identity: None
+
+Combine: None + None = None
+         Some(a) + None = Some(a)
+         Some(a) + Some(b) = Some(a+b)
+
+ */
+
+
 object OptionalExercises3 {
 
   sealed trait Maybe[+A]
@@ -109,15 +123,21 @@ object OptionalExercises3 {
 
   def map[A, B](m: Maybe[A])(f: A => B): Maybe[B] = ???
 
-  def fold[A, B](m: Maybe[A], default: => B, f: A => B): B = ???
+  def fold[A, B](m: Maybe[A], default: => B, f: A => B): B = m match {
+    case Just(a) => f(a)
+    case _ => default
+  }
 
   def orElse[A](m: Maybe[A], otherwise: => Maybe[A]): Maybe[A] = ???
 
   def orSome[A](m: Maybe[A], default: => A): A = ???
 
-  def map2[A, B, C](f: (A, B) => C)(m1: Maybe[A], m2: Maybe[B]): Maybe[C] = ???
+  def map2[A, B, C](f: (A, B) => C)(m1: Maybe[A], m2: Maybe[B]): Maybe[C] =
+    flatMap(m1)(a => map(m2)(b => f(a,b)))
 
   def sequence[A](l: List[Maybe[A]]): Maybe[List[A]] = ???
 
-  def ap[A, B](m1: Maybe[A], m2: Maybe[A => B]): Maybe[B] = ???
+  def ap[A, B](m1: Maybe[A], m2: Maybe[A => B]): Maybe[B] = flatMap(m1)(a => map(m2)(f => f(a)))
+
+
 }
