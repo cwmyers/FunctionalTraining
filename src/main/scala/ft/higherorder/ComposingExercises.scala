@@ -61,6 +61,7 @@ object ComposingExercises {
   def minusThree: Int => Int = ???
 
   // How do we create a new function from addTwo and minusThree?
+  // We want this function to run minusThree first and then run addTwo.
   def addTwoMinusThree: Int => Int = ???
   
   def prettyPrint(i:Int) = s"The number is $i"
