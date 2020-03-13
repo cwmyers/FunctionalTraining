@@ -5,16 +5,44 @@ import cats.implicits._
 
 object ValidationExercises {
 
+  /**
+   * Write a function that retrieves the value associated with a given `key` in the `input` `Map`.
+   * If the `key` cannot be found, return an appropriate `ErrorCode`,
+   * otherwise return the value associated with the `key`.
+   */
   def validateKey(key: String, input: Map[String, String]): ValidatedNel[ErrorCode, String] = ???
 
+  /**
+   * Validate `name` to ensure that it is not empty.
+   * If it is empty, return an appropriate `ErrorCode`,
+   * otherwise return the `name`.
+   */
   def nameValidation(name: String, label: String): ValidatedNel[ErrorCode, String] = ???
 
+  /**
+   * Validate the `password` to ensure that it has at least a numeric character.
+   * If it does not, return an appropriate `ErrorCode`,
+   * otherwise return the `password`.
+   *
+   * Hint: You may need to use `.exists` and `.isDigit`
+   */
   def passwordStrengthValidation(password: String): ValidatedNel[ErrorCode, String] = ???
 
+  /**
+   * Validate the `password` to ensure that its length is greater than 6.
+   * If the password is too short, return an appropriate `ErrorCode`,
+   * otherwise return the `password`.
+   */
   def passwordLengthValidation(password: String): ValidatedNel[ErrorCode, String] = ???
 
+  /**
+   * Convert this `input` `Map` into a `Person` if it contains valid `firstName`, `lastName` and `password`.
+   * You will want to compose all the functions you have written above to do this.
+   * If validation errors are encountered, this function should return all the errors that it has encountered.
+   *
+   * Hint: Use `.mapN` to compose multiple `ValidatedNel`s.
+   */
   def validateInput(input: Map[String, String]): ValidatedNel[ErrorCode, Person] = ???
-
 
 }
 
@@ -28,7 +56,7 @@ case object passwordTooWeak extends ErrorCode
 
 case class keyNotFound(key: String) extends ErrorCode
 
-case class nameIsEmpty(key: String) extends ErrorCode
+case class nameIsEmpty(label: String) extends ErrorCode
 
 
 /*

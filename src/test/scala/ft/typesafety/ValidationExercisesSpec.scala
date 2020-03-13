@@ -3,6 +3,7 @@ package ft.typesafety
 import org.specs2.mutable.Specification
 import ValidationExercises._
 import cats.data.NonEmptyList
+import cats.data.Validated.Invalid
 import org.specs2.matcher.ValidatedMatchers
 
 class ValidationExercisesSpec extends Specification with ValidatedMatchers {
@@ -34,7 +35,7 @@ class ValidationExercisesSpec extends Specification with ValidatedMatchers {
     validateInput(passwordNoNumbers) should beInvalid(NonEmptyList(passwordTooWeak, Nil))
   }
   "password too short and too weak" in {
-    validateInput(passwordNoNumbersAndTooShort) should beInvalid(NonEmptyList(passwordTooShort, List(passwordTooWeak)))
+    validateInput(passwordNoNumbersAndTooShort).leftMap(_.toList.toSet) should beEqualTo(Invalid(Set(passwordTooShort, passwordTooWeak)))
   }
   "no first name" in {
     validateInput(noFirstName) should beInvalid(NonEmptyList(keyNotFound("firstName"), Nil))
